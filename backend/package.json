@@ -2,7 +2,7 @@
   "name": "pinme",
   "private": true,
   "version": "1.0.0",
-  "description": "Social Media web app developed with React GG",
+  "description": "",
   "main": "package.json",
   "author": "Adolfo Micalco <jmicalco@gmail.com>",
   "license": "UNLICENSED",
@@ -27,9 +27,5 @@
     "react-dom": "^17.0",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JMicalco/PinMe.git"
-  }
+  "devDependencies": {}
 }
