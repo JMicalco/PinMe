@@ -1,2 +1,3 @@
 # PinMe
-Social Media web app developed with React
+
+Social Media web app developed with React GG
