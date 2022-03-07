@@ -1,11 +1,33 @@
 import React from 'react'
-import GoogleLogin from "react-google-login"
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login"
 import { useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc"
 import Video from '../assets/video.mp4'
 import Pin from "../assets/pin_2.png"
+import { client } from "../client"
 
 const Login = () => {
+  const navigate = useNavigate()
+
+  const responseGoogle =  (response: GoogleLoginResponse | GoogleLoginResponseOffline| any) => {
+
+    localStorage.setItem('user', JSON.stringify(response.profileObj))
+
+    const { name, googleId, imageUrl } = response.profileObj
+
+    const doc = {
+      _id: googleId,
+      _type: "user",
+      userName: name,
+      image: imageUrl
+    }
+
+    client.createIfNotExists(doc)
+      .then(() => {
+        navigate("/", {replace: true})
+      })
+  }
+
   return (
     <div className='flex justify-start items-center flex-col h-screen'>
       <div className='relative w-full h-full'>
@@ -24,7 +46,7 @@ const Login = () => {
           </div>
           <div className="shadow-2xl">
             <GoogleLogin
-              clientId=""
+              clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
               render={(renderProps) => (
                 <button
                   type="button"
@@ -38,6 +60,9 @@ const Login = () => {
                   Sign in with Google
                 </button>
               )}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy="single_host_origin"
             />
           </div>
         </div>
