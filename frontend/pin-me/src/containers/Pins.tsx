@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Pins = () => {
+interface Props {
+    user:any
+}
+
+const Pins = ({user}:Props) => {
   return (
     <div>Pins</div>
   )
