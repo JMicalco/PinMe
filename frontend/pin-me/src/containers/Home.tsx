@@ -10,7 +10,6 @@ import logo from "../assets/pin_2.png"
 import Pins from "./Pins"
 
 const  Home = () => {
-
   const [toggleSidebar, settoggleSidebar] = useState<boolean>(false);
   const [user, setUser] = useState<any>([]);
   const scrollRef = useRef(document.createElement("div"));
@@ -29,8 +28,6 @@ const  Home = () => {
     scrollRef.current.scrollTo(0, 0)
   }, [])
   
-  
-
   return (
     <div className = "flex bg-gray-50 md:flex-row flex-col h-screen transaction-height duration-75 ease-out">
       <div className = "hidden md:flex h-screen flex-initial"> 
