@@ -13,9 +13,11 @@ const  Home = () => {
   const [toggleSidebar, settoggleSidebar] = useState<boolean>(false);
   const [user, setUser] = useState<any>([]);
   const scrollRef = useRef(document.createElement("div"));
-
+  
+  //Get the user data stored in the localStorage
   const userInfo = localStorage.getItem("user") !== null ? JSON.parse(localStorage.getItem("user") || "{}"): localStorage.clear();
 
+  //Fetch the user ID and set it to user variable
   useEffect(() => {
     const query = userQuery(userInfo?.googleId); 
     client.fetch(query)
